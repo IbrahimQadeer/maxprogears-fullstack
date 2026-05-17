@@ -40,6 +40,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             {product.name.replace(/\//g, " / ")}
           </span>
         }
+        description={product.shortDescription}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Products", href: "/products" },
@@ -50,6 +51,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <CTASection
         title={`Order Custom ${product.name} for Your Academy`}
         description="Tell us your design, quantity, and requirements. We will respond with a quote and mockup options."
+        premium
       />
     </>
   );

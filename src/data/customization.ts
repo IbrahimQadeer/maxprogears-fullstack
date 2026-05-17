@@ -2,66 +2,66 @@ import type { CustomizationOption } from "@/types";
 
 export const customizationOptions: CustomizationOption[] = [
   {
-    id: "logo-placement",
-    icon: "🏛️",
-    title: "Logo Placement",
-    description:
-      "Your logo on chest, back, sleeves, collar, or waistband — positioned exactly where you need it for each product type.",
-  },
-  {
     id: "sublimation",
-    icon: "🎨",
+    icon: "",
     title: "Sublimation Printing",
     description:
-      "Full-color, all-over print that becomes part of the fabric. Ideal for rashguards, shorts, and apparel with complex patterns.",
+      "Full-color print for rashguards, shorts, singlets, and apparel where the artwork becomes part of the fabric.",
   },
   {
     id: "embroidery",
-    icon: "🪡",
+    icon: "",
     title: "Embroidery",
     description:
-      "Stitched logos and text for a premium finish on gis, polos, caps, and jackets.",
+      "Stitched logos, names, and details for gis, polos, hoodies, jackets, caps, and premium teamwear.",
   },
   {
     id: "woven-labels",
-    icon: "🏷️",
+    icon: "",
     title: "Woven Labels",
     description:
-      "Custom woven labels with your academy name and details at neck, side seam, or waistband.",
+      "Custom neck, hem, side seam, and waistband labels to support academy or private label presentation.",
   },
   {
     id: "size-labels",
-    icon: "📏",
+    icon: "",
     title: "Size Labels",
     description:
-      "Branded size tabs and care labels that match your academy's packaging standards.",
+      "Branded size and care labels that keep product information clear and consistent across the order.",
   },
   {
-    id: "private-label",
-    icon: "✨",
-    title: "Private Label / Academy Branding",
+    id: "logo-placement",
+    icon: "",
+    title: "Logo Placement",
     description:
-      "Your brand on the product with no supplier branding — ideal for academies building their own gear line.",
+      "Placement planning for chest, back, sleeves, collar, lapel, waistband, legs, and packaging touchpoints.",
   },
   {
     id: "color-matching",
-    icon: "🎨",
+    icon: "",
     title: "Color Matching",
     description:
-      "Match Pantone or reference colors across fabrics, stitching, and trim for a consistent kit.",
+      "Color direction based on your references, academy identity, or brand palette for a more consistent kit.",
+  },
+  {
+    id: "private-label",
+    icon: "",
+    title: "Private Label Branding",
+    description:
+      "Supplier-neutral branding support for academies and fight brands building their own product line.",
   },
   {
     id: "packaging",
-    icon: "📦",
+    icon: "",
     title: "Packaging Options",
     description:
-      "Branded poly bags, hang tags, and presentation packaging for a professional unboxing experience.",
+      "Hang tags, poly bags, labels, and presentation details can be discussed as part of the order scope.",
   },
   {
     id: "mockups",
-    icon: "🖌️",
+    icon: "",
     title: "Design & Mockup Support",
     description:
-      "Visual mockups prepared for your review before production — so you know what to expect on delivery.",
+      "Production-ready mockups help review artwork, placement, colors, and product details before manufacturing.",
   },
 ];

@@ -18,6 +18,7 @@ export default function HomePage() {
       <CTASection
         title="Start Your Custom Gear Order Today"
         description="Tell us what your academy needs. Our team will respond with a detailed quote, timeline, and mockup options."
+        premium
       />
     </>
   );

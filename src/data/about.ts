@@ -2,61 +2,79 @@ import type { WhyChooseItem } from "@/types";
 
 export const aboutValues: WhyChooseItem[] = [
   {
-    id: "honest",
-    icon: "🤝",
-    title: "Honest Business",
+    id: "custom-first",
+    icon: "",
+    title: "Custom-First Production",
     description:
-      "Clear communication, realistic timelines, and transparent pricing. We do not make claims we cannot back up.",
+      "Orders are built around your academy colors, logos, product mix, labels, and finishing requirements.",
   },
   {
-    id: "quality",
-    icon: "✅",
-    title: "Quality First",
+    id: "communication",
+    icon: "",
+    title: "Clear Communication",
     description:
-      "Products are inspected before shipping. We aim for the standard your athletes and academy deserve.",
+      "We keep product requirements, timelines, pricing, and order details straightforward from enquiry to dispatch.",
   },
   {
-    id: "focus",
-    icon: "🎯",
-    title: "Specialist Focus",
+    id: "mockups",
+    icon: "",
+    title: "Mockup Before Production",
     description:
-      "We concentrate on BJJ, MMA, and combat sports gear — so we understand academy and team requirements.",
+      "Design direction is translated into production-ready mockups for review before manufacturing begins.",
   },
   {
-    id: "global",
-    icon: "🌍",
-    title: "Global Reach",
+    id: "details",
+    icon: "",
+    title: "Product Detail Focus",
     description:
-      "We ship internationally. Logistics and shipping options are discussed clearly in every quote.",
+      "Fabric choices, trims, labels, stitching, prints, embroidery, and packaging details are treated as part of the final product.",
+  },
+  {
+    id: "order-support",
+    icon: "",
+    title: "Worldwide Order Support",
+    description:
+      "International orders are supported with clear shipping options and order communication before confirmation.",
   },
 ];
 
 export const aboutStoryBullets = [
-  "Full custom production — your colors, logos, and design",
-  "Sialkot manufacturing with global delivery",
-  "Transparent pricing, honest timelines, direct communication",
-  "Specialist in academy, team, and club orders",
+  "Custom production for academies, gyms, teams, clubs, and combat sports brands",
+  "Design mockups prepared before production approval",
+  "Support for logos, colors, labels, trims, packaging, and product details",
+  "Direct communication for quotes, order requirements, and shipping options",
+];
+
+export const whatWeSupply = [
+  "Custom BJJ gis",
+  "Rashguards",
+  "Fight shorts",
+  "MMA shorts",
+  "Teamwear",
+  "Hoodies and tracksuits",
+  "Private label support",
+  "Academy branding support",
 ];
 
 export const whoWeServe = [
   {
     title: "BJJ Academies",
-    description: "Gis, rashguards, belts, and full academy kits with consistent branding.",
-    icon: "🥋",
+    description:
+      "Custom gis, rashguards, shorts, and academy apparel built around a consistent team identity.",
   },
   {
     title: "MMA Gyms",
-    description: "Fight shorts, gloves, rashguards, and team apparel for mixed programs.",
-    icon: "🥊",
+    description:
+      "Training gear and teamwear for programs that need durable custom kit across multiple disciplines.",
   },
   {
     title: "Teams & Clubs",
-    description: "Size sets, walkout gear, and competition kits for rosters of any size.",
-    icon: "🏆",
+    description:
+      "Coordinated product runs for rosters, events, seminars, competitions, and club merchandise.",
   },
   {
     title: "Combat Sports Brands",
-    description: "Private label production for brands building their own product lines.",
-    icon: "✨",
+    description:
+      "Private label and brand-focused production support for custom combat sports product lines.",
   },
 ];

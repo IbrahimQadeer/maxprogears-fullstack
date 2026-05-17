@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { IMAGE_ALT, IMAGES } from "@/lib/images";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ShowcaseImage } from "@/components/ui/ShowcaseImage";
 import { Tag } from "@/components/ui/Tag";
 
 export const metadata: Metadata = {
@@ -10,6 +13,14 @@ export const metadata: Metadata = {
     "Request a custom quote for BJJ and MMA gear. Share your product type, quantity, and design requirements.",
 };
 
+const afterSubmitSteps = [
+  "We review your requirements",
+  "We discuss quantities and customization",
+  "Mockup and design discussion",
+  "Production timeline confirmation",
+  "Quote response via email or WhatsApp",
+];
+
 export default function QuotePage() {
   return (
     <>
@@ -17,42 +28,95 @@ export default function QuotePage() {
         tag="Get a Custom Quote"
         title={
           <>
-            Request Your <em className="text-gold italic">Custom Quote</em>
+            Start Your <em className="text-gold italic">Custom Gear</em>{" "}
+            Project
           </>
         }
-        description="Fill in your details and we will respond with a detailed quote, timeline, and mockup options. No obligation."
+        description="Tell us about your academy, team, or brand and we'll respond with production options, mockup guidance, timelines, and pricing."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Quote Request" },
         ]}
+        className="pt-[128px] pb-14 md:pt-[140px] md:pb-16"
       />
 
-      <section className="section-padding bg-charcoal">
+      <section className="bg-charcoal py-[64px] md:py-[88px]">
         <Container>
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_320px]">
+          <div className="grid grid-cols-1 gap-10 xl:grid-cols-[1fr_390px] xl:items-start">
             <div>
-              <Tag className="mb-8">Quote Request Form</Tag>
+              <div className="mb-8">
+                <Tag className="mb-5">Quote Request Form</Tag>
+                <h2 className="max-w-[720px] font-display text-[clamp(2rem,4vw,3.25rem)] leading-tight font-semibold text-off-white">
+                  Share the Details for Your Custom Order
+                </h2>
+                <div className="my-5 h-px w-20 bg-gold/70" aria-hidden />
+                <p className="max-w-[680px] text-base leading-8 text-grey">
+                  The more clearly we understand your products, quantities,
+                  design direction, and timeline, the more useful the first
+                  quote response can be.
+                </p>
+              </div>
               <QuoteForm />
             </div>
-            <aside className="space-y-6 lg:sticky lg:top-28">
+
+            <aside className="space-y-5 xl:sticky xl:top-28">
+              <ShowcaseImage
+                src={IMAGES.hero}
+                alt={IMAGE_ALT.hero}
+                aspectClass="aspect-[4/3] md:aspect-[16/10] xl:aspect-[4/5]"
+                objectFit="contain"
+                overlay="gold"
+                glow
+                sizes="(max-width: 1280px) 100vw, 390px"
+                className="rounded-sm bg-[linear-gradient(135deg,#060606,#171207)]"
+              />
               <div className="border border-gold/20 bg-gold/5 p-6">
-                <p className="mb-2 font-condensed text-xs font-bold tracking-[0.2em] text-gold uppercase">
-                  What to Include
+                <p className="mb-3 font-condensed text-xs font-bold tracking-[0.2em] text-gold uppercase">
+                  Helpful to Include
                 </p>
-                <ul className="space-y-2 text-sm text-grey">
-                  <li>Product type and quantity</li>
+                <ul className="space-y-3 text-sm leading-6 text-grey">
+                  <li>Product type and quantity range</li>
                   <li>Size breakdown if known</li>
-                  <li>Logo files (vector preferred)</li>
-                  <li>Target delivery date</li>
+                  <li>Logo files or design references</li>
+                  <li>Customization and packaging notes</li>
+                  <li>Target delivery date or event deadline</li>
                 </ul>
               </div>
               <div className="border border-gold/12 bg-black/40 p-6">
-                <p className="text-sm leading-relaxed text-grey">
+                <p className="text-sm leading-7 text-grey">
                   Prefer to chat first? Use WhatsApp for a quick conversation
                   before submitting a full quote request.
                 </p>
               </div>
             </aside>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-padding bg-black">
+        <Container>
+          <SectionHeader
+            tag="After You Submit"
+            title="What Happens After You Submit?"
+            description="Your quote request starts a practical review of product type, quantities, customization, timeline, and the best way to respond."
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {afterSubmitSteps.map((step, index) => (
+              <article
+                key={step}
+                className="border border-gold/12 bg-charcoal/45 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-charcoal"
+              >
+                <span
+                  className="mb-5 block font-condensed text-[13px] font-extrabold tracking-[0.16em] text-gold"
+                  aria-hidden
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-condensed text-sm leading-6 font-bold tracking-[0.1em] text-off-white uppercase">
+                  {step}
+                </h3>
+              </article>
+            ))}
           </div>
         </Container>
       </section>
