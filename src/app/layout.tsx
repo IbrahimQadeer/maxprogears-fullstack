@@ -4,9 +4,6 @@ import {
   Barlow_Condensed,
   Cormorant_Garamond,
 } from "next/font/google";
-import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
-import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
@@ -35,23 +32,25 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/branding/wings.png",
+    shortcut: "/branding/wings.png",
+    apple: "/branding/wings.png",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
       className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-black font-body text-off-white">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFab />
+      <body className="min-h-full font-body">
+        {children}
       </body>
     </html>
   );

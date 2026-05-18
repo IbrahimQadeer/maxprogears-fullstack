@@ -33,21 +33,21 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 right-0 left-0 z-[1000] border-b border-transparent px-6 transition-all duration-400 lg:px-10",
+          "fixed top-0 right-0 left-0 z-[1000] border-b border-transparent px-5 transition-all duration-400 sm:px-7 lg:px-12",
           scrolled &&
             "border-gold/12 bg-black/97 backdrop-blur-xl",
         )}
       >
-        <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between">
-          <Logo />
+        <div className="mx-auto grid h-[80px] max-w-[1480px] grid-cols-[auto_auto] items-center gap-5 lg:h-[88px] lg:grid-cols-[minmax(190px,auto)_1fr_minmax(160px,auto)]">
+          <Logo showText />
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center justify-center gap-9 xl:gap-11 lg:flex">
             {mainNavLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "nav-link font-condensed text-xs font-semibold tracking-[0.15em] text-grey-light uppercase transition-colors",
+                    "nav-link font-condensed text-[13px] font-bold tracking-[0.18em] text-grey-light uppercase transition-colors xl:text-sm",
                     (pathname === link.href ||
                       (link.href !== "/" &&
                         pathname.startsWith(`${link.href}/`))) &&
@@ -60,15 +60,15 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden lg:block">
-            <Button href="/quote" showArrow className="!px-5 !py-2.5 !text-[11px]">
+          <div className="hidden justify-self-end lg:block">
+            <Button href="/quote" showArrow className="!px-6 !py-3 !text-xs">
               Get Quote
             </Button>
           </div>
 
           <button
             type="button"
-            className="flex flex-col gap-1.5 lg:hidden"
+            className="flex flex-col gap-1.5 justify-self-end lg:hidden"
             onClick={() => setMobileOpen((o) => !o)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -98,7 +98,7 @@ export function Navbar() {
       {/* Mobile menu overlay */}
       <div
         className={cn(
-          "fixed inset-0 top-[72px] z-[999] flex flex-col gap-2 bg-black px-6 py-10 transition-all duration-300 lg:hidden",
+          "fixed inset-0 top-[80px] z-[999] flex flex-col gap-2 bg-black px-6 py-10 transition-all duration-300 lg:hidden",
           mobileOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-4 opacity-0",

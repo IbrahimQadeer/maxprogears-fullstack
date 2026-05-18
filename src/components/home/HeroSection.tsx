@@ -78,7 +78,7 @@ export function HeroSection() {
             Made in Sialkot
           </span>
           <span className="absolute bottom-5 left-5 z-10 max-w-[calc(100%-40px)] font-condensed text-[11px] font-semibold tracking-[0.15em] text-off-white/90 uppercase drop-shadow-md">
-            MAXPROGEARS Custom Gear Collection
+            MAX PRO GEARS Custom Gear Collection
           </span>
         </div>
       </div>

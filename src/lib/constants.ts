@@ -2,7 +2,7 @@ import type { SiteConfig } from "@/types";
 
 /** Central site config — update here when contact details change */
 export const siteConfig: SiteConfig = {
-  name: "MAXPROGEARS",
+  name: "MAX PRO GEARS",
   tagline:
     "Premium custom BJJ and MMA gear for academies, teams, and fight clubs. Manufactured in Sialkot, shipped worldwide.",
   description:

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { allProducts } from "@/data/products";
 import { whatsappUrl } from "@/lib/constants";
+import { supabase } from "@/lib/supabase";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
@@ -57,6 +58,9 @@ export function QuoteForm() {
     const formData = new FormData(form);
     const details = String(formData.get("details") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
+    const customizationDetails = [details, message && `Message: ${message}`]
+      .filter(Boolean)
+      .join("\n\n");
 
     if (!details && !message) {
       setValidationError(
@@ -67,8 +71,8 @@ export function QuoteForm() {
 
     const payload: Record<string, string> = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New MAXPROGEARS Quote Request",
-      from_name: String(formData.get("fullName") ?? "MAXPROGEARS Quote Form"),
+      subject: "New MAX PRO GEARS Quote Request",
+      from_name: String(formData.get("fullName") ?? "MAX PRO GEARS Quote Form"),
     };
 
     formData.forEach((value, key) => {
@@ -94,6 +98,26 @@ export function QuoteForm() {
       if (!response.ok || !result.success) {
         throw new Error(result.message ?? "Web3Forms submission failed.");
       }
+
+      const { error: supabaseError } = await supabase
+        .from("quote_requests")
+        .insert({
+          full_name: String(formData.get("fullName") ?? ""),
+          email: String(formData.get("email") ?? ""),
+          whatsapp: String(formData.get("whatsapp") ?? ""),
+          country: String(formData.get("country") ?? ""),
+          academy: String(formData.get("academy") ?? ""),
+          product_type: String(formData.get("productType") ?? ""),
+          quantity: String(formData.get("quantity") ?? ""),
+          deadline: String(formData.get("deadline") ?? ""),
+          budget: String(formData.get("budget") ?? ""),
+          customization_details: customizationDetails,
+        });
+
+      if (supabaseError) {
+  alert(JSON.stringify(supabaseError, null, 2));
+  console.error("Supabase quote_requests insert failed:", supabaseError);
+}
 
       form.reset();
       setSubmitStatus("success");

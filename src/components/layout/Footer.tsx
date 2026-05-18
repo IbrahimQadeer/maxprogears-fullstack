@@ -130,7 +130,7 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-gold/12 pt-8">
           <p className="text-xs text-grey">
-            © {year} MAXPROGEARS. All rights reserved.
+            © {year} MAX PRO GEARS. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/privacy" className="text-xs text-grey hover:text-off-white">

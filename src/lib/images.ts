@@ -8,9 +8,9 @@ export const IMAGES = {
 } as const;
 
 export const IMAGE_ALT = {
-  hero: "Custom MAXPROGEARS BJJ gi, rashguard, and fight gear collection on dark background",
+  hero: "Custom MAX PRO GEARS BJJ gi, rashguard, and fight gear collection on dark background",
   products:
-    "MAXPROGEARS product range including BJJ gi, rashguard, fight shorts, and team hoodie",
+    "MAX PRO GEARS product range including BJJ gi, rashguard, fight shorts, and team hoodie",
   gallery:
     "Gallery of custom combat sports gear — gis, rashguards, shorts, and team apparel",
   details:

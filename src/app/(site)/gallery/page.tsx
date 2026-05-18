@@ -11,7 +11,7 @@ import { SectionImageBlock } from "@/components/ui/SectionImageBlock";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Custom BJJ gear, no-gi apparel, teamwear, and packaging from MAXPROGEARS.",
+    "Custom BJJ gear, no-gi apparel, teamwear, and packaging from MAX PRO GEARS.",
 };
 
 export default function GalleryPage() {

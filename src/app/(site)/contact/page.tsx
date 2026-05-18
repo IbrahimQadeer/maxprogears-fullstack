@@ -14,7 +14,7 @@ import { Tag } from "@/components/ui/Tag";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact MAXPROGEARS for custom BJJ and MMA gear enquiries via WhatsApp, email, or our contact form.",
+    "Contact MAX PRO GEARS for custom BJJ and MMA gear enquiries via WhatsApp, email, or our contact form.",
 };
 
 const contactCards = [
@@ -59,7 +59,7 @@ export default function ContactPage() {
             <em className="text-gold italic">Custom Gear</em>
           </>
         }
-        description="Contact MAXPROGEARS to discuss custom academy apparel, teamwear, fight gear, and production requirements."
+        description="Contact MAX PRO GEARS to discuss custom academy apparel, teamwear, fight gear, and production requirements."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         className="pt-[128px] pb-14 md:pt-[140px] md:pb-16"
       />
@@ -69,7 +69,7 @@ export default function ContactPage() {
           <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <SectionHeader
               tag="Contact Details"
-              title="Reach the MAXPROGEARS Team"
+              title="Reach the MAX PRO GEARS Team"
               description="Use the channel that works best for your enquiry. Include the product type, quantity, timeline, and any customization notes if you already have them."
               className="mb-0"
             />

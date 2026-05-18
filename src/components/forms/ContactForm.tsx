@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
+import { supabase } from "@/lib/supabase";
 
 const WEB3FORMS_ACCESS_KEY = "1b002461-7f32-4932-bdda-466a037e463f";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
@@ -32,8 +33,8 @@ export function ContactForm() {
     const formData = new FormData(form);
     const payload: Record<string, string> = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New MAXPROGEARS Contact Inquiry",
-      from_name: String(formData.get("name") ?? "MAXPROGEARS Contact Form"),
+      subject: "New MAX PRO GEARS Contact Inquiry",
+      from_name: String(formData.get("name") ?? "MAX PRO GEARS Contact Form"),
     };
 
     formData.forEach((value, key) => {
@@ -58,6 +59,32 @@ export function ContactForm() {
 
       if (!response.ok || !result.success) {
         throw new Error(result.message ?? "Web3Forms submission failed.");
+      }
+
+      const contactSubmission = {
+        full_name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        whatsapp: String(formData.get("whatsapp") ?? ""),
+        country: String(formData.get("country") ?? ""),
+        academy: "Contact Form",
+        product_type: "General Inquiry",
+        quantity: "N/A",
+        deadline: "N/A",
+        budget: "N/A",
+        customization_details: String(formData.get("message") ?? ""),
+      };
+
+      const { error: supabaseError } = await supabase
+        .from("quote_requests")
+        .insert(contactSubmission);
+
+      if (supabaseError) {
+        console.error("Supabase contact form insert failed:", {
+          message: supabaseError.message,
+          details: supabaseError.details,
+          hint: supabaseError.hint,
+          code: supabaseError.code,
+        });
       }
 
       form.reset();

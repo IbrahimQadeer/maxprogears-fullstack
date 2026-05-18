@@ -16,21 +16,21 @@ import { Tag } from "@/components/ui/Tag";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "MAXPROGEARS is a custom BJJ and MMA gear supplier based in Sialkot, Pakistan, serving academies, gyms, and teams worldwide.",
+    "MAX PRO GEARS is a custom BJJ and MMA gear supplier based in Sialkot, Pakistan, serving academies, gyms, and teams worldwide.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        tag="About MAXPROGEARS"
+        tag="About MAX PRO GEARS"
         title={
           <>
             Built to Supply Serious{" "}
             <em className="text-gold italic">Combat Sports</em> Programs
           </>
         }
-        description="MAXPROGEARS helps academies, teams, and fight brands create custom training gear with clean communication, detailed mockups, and production-ready execution."
+        description="MAX PRO GEARS helps academies, teams, and fight brands create custom training gear with clean communication, detailed mockups, and production-ready execution."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         className="pt-[128px] pb-14 md:pt-[140px] md:pb-16"
       />
@@ -46,7 +46,7 @@ export default function AboutPage() {
               </h2>
               <div className="mb-7 h-px w-20 bg-gold/70" aria-hidden />
               <p className="mb-5 text-base leading-8 text-grey">
-                MAXPROGEARS is a custom BJJ and MMA gear supplier based in
+                MAX PRO GEARS is a custom BJJ and MMA gear supplier based in
                 Sialkot, Pakistan, a global centre for combat sports
                 manufacturing. We work with academies, gyms, fight teams, and
                 martial arts clubs to produce gear that represents their

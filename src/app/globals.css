@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Brand design tokens — matches MAXPROGEARS luxury dark theme */
+/* Brand design tokens — matches MAX PRO GEARS luxury dark theme */
 @theme inline {
   --color-black: #0a0a0a;
   --color-charcoal: #1a1a1a;
@@ -40,11 +40,12 @@ body {
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -7px;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 2px;
   background: var(--color-gold);
+  border-radius: 999px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -96,6 +97,23 @@ body {
 
 .animate-pulse-wa {
   animation: pulse-wa 2.5s infinite;
+}
+
+@keyframes brand-splash-fade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.brand-splash-logo {
+  animation: brand-splash-fade 0.8s ease-out both;
 }
 
 /* Section spacing utility */

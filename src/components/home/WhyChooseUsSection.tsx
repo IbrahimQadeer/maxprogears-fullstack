@@ -11,7 +11,7 @@ export function WhyChooseUsSection() {
           <header>
             <Tag className="mb-5">Why Choose Us</Tag>
             <h2 className="font-display text-[clamp(2.25rem,4vw,3.75rem)] leading-tight font-semibold text-off-white">
-              The MAXPROGEARS{" "}
+              The MAX PRO GEARS{" "}
               <em className="text-gold italic">Difference</em>
             </h2>
             <Divider />
