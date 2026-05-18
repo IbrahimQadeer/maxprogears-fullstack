@@ -35,6 +35,22 @@ export type Product = {
   relatedSlugs: string[];
 };
 
+export type ProductRecord = {
+  id: string;
+  created_at: string | null;
+  name: string;
+  slug: string;
+  category: string;
+  short_description: string | null;
+  full_description: string | null;
+  moq: string | number | null;
+  lead_time: string | null;
+  image_url: string | null;
+  gallery_images: string[] | null;
+  featured: boolean | null;
+  active: boolean | null;
+};
+
 export type WhyChooseItem = {
   id: string;
   icon: string;

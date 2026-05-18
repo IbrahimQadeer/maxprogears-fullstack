@@ -1,10 +1,9 @@
-import { createServerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
   Quote,
   QuotesTableClient,
 } from "@/components/admin/QuotesTableClient";
+import { requireAdminUser } from "@/lib/supabase/auth";
 import { supabase } from "@/lib/supabase";
 
 function valueOrNA(value: unknown) {
@@ -38,25 +37,7 @@ function formatDate(date: string | null | undefined) {
 }
 
 export default async function AdminQuotesPage() {
-  const cookieStore = await cookies();
-  const authSupabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll();
-        },
-      },
-    },
-  );
-  const {
-    data: { user },
-  } = await authSupabase.auth.getUser();
-
-  if (!user) {
-    redirect("/admin/login");
-  }
+  await requireAdminUser();
 
   const { data: quotes, error } = await supabase
     .from("quote_requests")

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getProductCategories } from "@/lib/products";
+import { supabase } from "@/lib/supabase";
 import { IMAGE_ALT, IMAGES } from "@/lib/images";
 import { CTASection } from "@/components/shared/CTASection";
 import { CategoryCard } from "@/components/shared/CategoryCard";
@@ -7,6 +8,8 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ShowcaseImage } from "@/components/ui/ShowcaseImage";
+import { PublicProductCard } from "@/components/shared/PublicProductCard";
+import type { ProductRecord } from "@/types";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -14,8 +17,18 @@ export const metadata: Metadata = {
     "Custom BJJ gis, rashguards, fight shorts, and team apparel for academies and fight teams.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
   const categories = getProductCategories();
+
+  const response = await supabase
+    .from("products")
+    .select("*")
+    .eq("active", true)
+    .order("featured", { ascending: false })
+    .order("created_at", { ascending: false });
+
+  const activeProducts = (response.data ?? []) as ProductRecord[];
+  const featuredProducts = activeProducts.filter((product) => product.featured);
 
   return (
     <>
@@ -48,7 +61,7 @@ export default function ProductsPage() {
                 shorts, and branded team apparel.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-3 border-y border-gold/12 py-6">
-                {["Fight Gear", "Team Apparel", "Custom Branding"].map((item) => (
+                {['Fight Gear', 'Team Apparel', 'Custom Branding'].map((item) => (
                   <span
                     key={item}
                     className="font-condensed text-[11px] font-bold tracking-[0.14em] text-gold uppercase"
@@ -91,6 +104,62 @@ export default function ProductsPage() {
               />
             ))}
           </div>
+        </Container>
+      </section>
+
+      {featuredProducts.length > 0 && (
+        <section className="section-padding bg-charcoal">
+          <Container>
+            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+                  Featured collection
+                </p>
+                <h2 className="mt-3 text-4xl font-semibold tracking-tight text-off-white">
+                  Spotlight products for elite custom orders
+                </h2>
+              </div>
+              <p className="text-sm leading-6 text-zinc-400">
+                {featuredProducts.length} premium product{featuredProducts.length === 1 ? "" : "s"} currently active.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {featuredProducts.map((product) => (
+                <PublicProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <section className="section-padding bg-black">
+        <Container>
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+                Active products
+              </p>
+              <h2 className="mt-3 text-4xl font-semibold tracking-tight text-off-white">
+                Browse the MAXPROGEARS catalog
+              </h2>
+            </div>
+            <p className="text-sm leading-6 text-zinc-400">
+              {activeProducts.length} active product{activeProducts.length === 1 ? "" : "s"} available.
+            </p>
+          </div>
+
+          {activeProducts.length === 0 ? (
+            <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-10 text-center text-zinc-400">
+              No active products are currently published. Check back soon.
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {activeProducts.map((product) => (
+                <PublicProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 

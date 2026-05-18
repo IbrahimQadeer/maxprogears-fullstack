@@ -16,6 +16,18 @@ export function LogoutButton() {
     [],
   );
 
+  function clearAuthStorage() {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    Object.keys(window.localStorage).forEach((key) => {
+      if (key.startsWith("supabase.auth.") || key.includes("supabase-auth")) {
+        window.localStorage.removeItem(key);
+      }
+    });
+  }
+
   async function handleLogout() {
     setIsLoggingOut(true);
 
@@ -23,10 +35,13 @@ export function LogoutButton() {
 
     if (error) {
       console.error("Supabase logout failed:", error);
-      setIsLoggingOut(false);
+      clearAuthStorage();
+      router.replace("/admin/login");
+      router.refresh();
       return;
     }
 
+    clearAuthStorage();
     router.replace("/admin/login");
     router.refresh();
   }

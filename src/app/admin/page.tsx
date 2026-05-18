@@ -1,9 +1,8 @@
-import { createServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { DashboardStats } from "@/components/admin/DashboardStats";
 import { RecentActivity } from "@/components/admin/RecentActivity";
+import { requireAdminUser } from "@/lib/supabase/auth";
 import { supabase } from "@/lib/supabase";
 
 type Quote = {
@@ -25,25 +24,7 @@ function countByStatus(quotes: Quote[], status: string) {
 }
 
 export default async function AdminPage() {
-  const cookieStore = await cookies();
-  const authSupabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll();
-        },
-      },
-    },
-  );
-  const {
-    data: { user },
-  } = await authSupabase.auth.getUser();
-
-  if (!user) {
-    redirect("/admin/login");
-  }
+  await requireAdminUser();
 
   const { data: quotes, error } = await supabase
     .from("quote_requests")

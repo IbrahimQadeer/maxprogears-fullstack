@@ -24,11 +24,13 @@ export default function AdminLoginPage() {
     let isMounted = true;
 
     async function redirectAuthenticatedUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const result = await supabase.auth.getUser();
 
-      if (isMounted && user) {
+      if (result.error?.message?.toLowerCase().includes("refresh token")) {
+        await supabase.auth.signOut();
+      }
+
+      if (isMounted && result.data.user) {
         router.replace("/admin");
       }
     }

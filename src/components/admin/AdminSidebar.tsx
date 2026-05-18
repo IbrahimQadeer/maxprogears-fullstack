@@ -7,7 +7,7 @@ import { BrandImage } from "@/components/ui/BrandImage";
 const navItems = [
   { label: "Dashboard", href: "/admin" },
   { label: "Quotes", href: "/admin/quotes" },
-  { label: "Products", href: "#" },
+  { label: "Products", href: "/admin/products" },
   { label: "Services", href: "#" },
   { label: "Settings", href: "#" },
 ];

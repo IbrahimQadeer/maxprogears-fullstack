@@ -1,12 +1,11 @@
-import { createServerClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { ArchiveQuoteButton } from "@/components/admin/ArchiveQuoteButton";
 import { CopyButton } from "@/components/admin/CopyButton";
 import { QuoteStatusSelect } from "@/components/admin/QuoteStatusSelect";
 import { ReadToggleButton } from "@/components/admin/ReadToggleButton";
 import { RelativeTime } from "@/components/admin/RelativeTime";
+import { requireAdminUser } from "@/lib/supabase/auth";
 import { supabase } from "@/lib/supabase";
 
 type Quote = {
@@ -91,25 +90,7 @@ export default async function AdminQuoteDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const cookieStore = await cookies();
-  const authSupabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll();
-        },
-      },
-    },
-  );
-  const {
-    data: { user },
-  } = await authSupabase.auth.getUser();
-
-  if (!user) {
-    redirect("/admin/login");
-  }
+  await requireAdminUser();
 
   const { data: quote, error } = await supabase
     .from("quote_requests")

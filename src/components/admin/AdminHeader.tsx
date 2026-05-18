@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LogoutButton } from "@/app/admin/LogoutButton";
+import { LogoutButton } from "@/components/admin/LogoutButton";
 import { BrandImage } from "@/components/ui/BrandImage";
 import { AdminSidebar } from "./AdminSidebar";
 
